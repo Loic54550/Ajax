@@ -4,37 +4,46 @@
     <meta charset="utf-8">
     <script src="lib/js/jquery.js"></script>
     <script src="lib/js/bootstrap.js"></script>
+    <script src="src/js/script.js"></script>
     <link rel="stylesheet" href="src/css/style.css">     
     <link rel="stylesheet" href="lib/css/bootstrap.css">
     <title>Ajax Formulaire</title>
 </head>
 <body>
     <div class="formbody">
-    <h1>Ajax Formulaire</h1>
+        <div id="test">FORMULAIRE</div>
+        <h1 class="h1title">Ajax Formulaire</h1>
+        <hr class="my-4">
     <form id="myform">
 
-            <h4 label class="formcol" for="lastName" >Nom :</label></h4>
-            <input name="lastName" id="lastName" type="text" style="width: 300px" placeholder="votre Nom"/>
+            <h4 label class="formcol" for="lastName">Nom :</label></h4>
+            <input name="lastName" id="lastName" class="push300" type="text" placeholder="votre Nom"/>
             <br /><br />
 
             <h4 label class="formcol" for="firstName">Prénom :</label></h4>
-            <input name="firstName" id="firstName" type="text" style="width: 300px" placeholder="votre Prénom"/>
+            <input name="firstName" id="firstName" class="push300" type="text" placeholder="votre Prénom"/>
             <br /><br />
 
             <h4 label class="formcol" for="continent">Continent :</label></h4>
-            <select name="continent" id="continent">
-            	<option value="none">Sélectionnez votre pays de résidence</option>
+            <select name="continent" class="push300" id="continent">
+            	<option value="-1">Sélectionnez votre Continent</option>
                 {% for continent in continents %}
                     <option value="{{ continent.id }}">{{ continent.continent }}</option>
                 {% endfor %}
-        	</select>   
+            </select> 
+              
+            <br /><br />
+            <h4 label class="formcol" for="pays">Pays :</label></h4>
+            <select name="pays" class="push300" id="pays"></select>               
             <br /><br />
 
-            <div class="row">
-            <div class="col-md-2"></div>
-                <span class="formInput"></span>
-                <input type="submit" class="btn btn-primary" value="M'inscrire" />
-                <input type="reset" class="btn btn-danger" value="Réinitialiser le formulaire" />
+            <h4 label class="formcol" for="ville">Ville :</label></h4>
+            <select name="ville" class="push300" id="ville"></select>   
+            <br /><br />
+        
+            <div class="formInput">
+            <input type="submit" class="btn btn-primary" value="M'inscrire" />
+            <input type="reset" class="btn btn-danger" value="Réinitialiser le formulaire" />
             </div>
     </form>
     </div>

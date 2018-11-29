@@ -18,15 +18,35 @@ function co() {
 }
 
 function getContinent() {
+    $pdo = co();
     $sql =  'SELECT * FROM continent';
-    $reponse = co()->query($sql);
+    $reponse = $pdo->query($sql);
     return $reponse;
 }
+
+function getPays($id) {
+    $pdo = co();
+    $sql =  'SELECT * FROM pays WHERE continentId = ' . $id;
+    $reponse = $pdo->query($sql);
+    return $reponse;
+}
+
+function getVille($id1) {
+    $pdo = co();
+    $sql =  'SELECT * FROM ville WHERE paysId = ' . $id1;
+    $reponse = $pdo->query($sql);
+    return $reponse;
+}
+
+
+
+
+
 /*
 // Vérification pseudo
 function checkUser($pseudo) {
-    $bdd = co();
-    $req = $bdd->prepare('SELECT ID FROM utilisateur WHERE nom = :nom');
+    $pdo = co();
+    $req = $pdo->prepare('SELECT ID FROM utilisateur WHERE nom = :nom');
     $req->bindParam(':nom', $pseudo, PDO::PARAM_STR);
     $req->execute();
     return $req->rowCount();
@@ -35,8 +55,8 @@ function checkUser($pseudo) {
 
 //Récupération nom prenom ville
 function getUser($nom, $prenom, $villeId) {
-    $bdd = co();
-    $req = $bdd->prepare('SELECT * FROM utilisateur WHERE nom = :nom AND prenom = :prenom AND villeId = :villeId');
+    $pdo = co();
+    $req = $pdo->prepare('SELECT * FROM utilisateur WHERE nom = :nom AND prenom = :prenom AND villeId = :villeId');
     $req->bindParam(':nom', $nom, PDO::PARAM_STR);
     $req->bindParam(':prenom', $prenom, PDO::PARAM_STR);
     $req->bindParam(':villeId', $villeId, PDO::PARAM_STR);
@@ -46,8 +66,8 @@ function getUser($nom, $prenom, $villeId) {
 
 //Insertion nom prenom
 function insertUser($nom, $prenom) {
-    $bdd = co();
-    $req = $bdd->prepare('INSERT INTO utilisateur (nom, prenom) VALUES (:nom, :preom)');
+    $pdo = co();
+    $req = $pdo->prepare('INSERT INTO utilisateur (nom, prenom) VALUES (:nom, :preom)');
     $req->bindParam(":nom", $nom);
     $req->bindParam(":prenom", $prenom);
     $req->execute();
