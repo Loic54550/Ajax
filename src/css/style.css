@@ -1,16 +1,16 @@
 .push300 {
-   width: 400px;
+   width: 200px;
 }
 
 .h1title {
    color: white;
    text-align: center;
-
-   
+ 
 }
 
-.formbody {
-    background-color:black;
+body {
+   background-image:url(../img/world.jpg);
+   background-repeat:no-repeat;
     
 }
 
@@ -34,12 +34,24 @@
    padding: 15px;
    text-align: center;
    min-height: 1px;
-   text-align: right;
+   text-align: center;
 
 }
 
 .my-4 {
    background-color:white;
+  
+}
+
+#myform {
+   margin-left: 300px;
+
+
+}
+
+.formInput2 {
+   text-align: center;
+
 
 
 }

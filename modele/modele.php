@@ -39,27 +39,12 @@ function getVille($id1) {
 }
 
 
-
-
-
-/*
-// Vérification pseudo
-function checkUser($pseudo) {
-    $pdo = co();
-    $req = $pdo->prepare('SELECT ID FROM utilisateur WHERE nom = :nom');
-    $req->bindParam(':nom', $pseudo, PDO::PARAM_STR);
-    $req->execute();
-    return $req->rowCount();
-}
-*/
-
 //Récupération nom prenom ville
-function getUser($nom, $prenom, $villeId) {
+function getUser($nom, $prenom) {
     $pdo = co();
-    $req = $pdo->prepare('SELECT * FROM utilisateur WHERE nom = :nom AND prenom = :prenom AND villeId = :villeId');
+    $req = $pdo->prepare('SELECT * FROM utilisateur WHERE nom = :nom AND prenom = :prenom');
     $req->bindParam(':nom', $nom, PDO::PARAM_STR);
     $req->bindParam(':prenom', $prenom, PDO::PARAM_STR);
-    $req->bindParam(':villeId', $villeId, PDO::PARAM_STR);
     $req->execute();
     return $req;
 }
@@ -67,13 +52,34 @@ function getUser($nom, $prenom, $villeId) {
 //Insertion nom prenom
 function insertUser($nom, $prenom, $villeId) {
     $pdo = co();
-    $req = $pdo->prepare('INSERT INTO utilisateur (nom, prenom) VALUES (:nom, :preom)');
+    $req = $pdo->prepare('INSERT INTO utilisateur (nom, prenom, villeId) VALUES (:nom, :prenom, :ville)');
     $req->bindParam(":nom", $nom);
     $req->bindParam(":prenom", $prenom);
     $req->bindParam(":ville", $villeId);
     $req->execute();
 }
- 
+// récupération id continent
+function idToContinent($id) {
+    $pdo = co();
+    $req = $pdo->prepare('SELECT * FROM continent WHERE id = :id');
+    $req->bindParam(':id', $id, PDO::PARAM_STR);
+    $req->execute();
+    return $req;
+}
+// récupération id pays
+function idToPays($id) {
+    $pdo = co();
+    $req = $pdo->prepare('SELECT * FROM pays WHERE id = :id');
+    $req->bindParam(':id', $id, PDO::PARAM_STR);
+    $req->execute();
+    return $req;
+}
 
-
-
+// récupération id ville
+function idToville($id) {
+    $pdo = co();
+    $req = $pdo->prepare('SELECT * FROM ville WHERE id = :id');
+    $req->bindParam(':id', $id, PDO::PARAM_STR);
+    $req->execute();
+    return $req;
+}

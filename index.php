@@ -3,6 +3,35 @@
 // MODELE
 require('modele/modele.php');
 
+// S'enregistrer
+if (isset ($_POST['nomInscription'], $_POST['prenomInscription'], $_POST['villeInscription'])) {
+    $dataUser = getUser($_POST['nomInscription'], $_POST['prenomInscription']);
+    $res = $dataUser->fetch();
+    if (!$res) insertUser($_POST['nomInscription'], $_POST['prenomInscription'], $_POST['villeInscription']);
+}
+
+//afficher utlisateur continent, pays, ville)
+if(isset($_POST['nom'], $_POST['prenom'])) {
+    $dataUser = getUser($_POST['nom'], $_POST['prenom']);
+    $res = $dataUser->fetch();
+
+    $id = idToville($res['villeId']);
+    $id = $id->fetch();
+    $nomVille = $id['ville'];
+
+    $id = idToPays($id['paysId']);
+    $id = $id->fetch();
+    $nomPays = $id['pays'];
+
+    $id = idToContinent($id['continentId']);
+    $id = $id->fetch();
+    $nomContinent = $id['continent'];
+
+    echo "$nomContinent, $nomPays, $nomVille";
+
+    exit;
+}
+
 // CONTROLLER
 $reponse = getContinent();
 
@@ -18,7 +47,7 @@ echo $twig->render('index.twig.html', array(
 ));
 
 
-/* 
+/*
 // connection
 $messageErreur = "";
 if (isset($_POST['nomConnexion'], $_POST['prenomConnexion'])) {
@@ -31,14 +60,4 @@ if (isset($_POST['nomConnexion'], $_POST['prenomConnexion'])) {
     else {
         $messageErreur = "Erreur";
     }
-}
-*/
-
-// S'enregistrer
-if (isset($_POST['nomInscription'], $_POST['prenomInscription'])) {
-    $dataUser = getUser($_POST['nomInscription'], $_POST['prenomInscription']);
-    $res = $dataUser->fetch(); 
-    if (!$res) insertUser($_POST['nomInscription'], $_POST['prenomInscription']);
-}
-
-
+}*/
