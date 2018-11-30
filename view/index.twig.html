@@ -15,40 +15,41 @@
         <h1 class="h1title">Ajax Formulaire</h1>
         <hr class="my-4">
     
-    <form id="myform" method="POST">
-        <div class="formInput">
-        <input type="submit" class="btn btn-primary" value="M'inscrire" />
-        </div>
-        <br /><br />
+        <form method="POST">
+            <div class="formInput">
+                <input type="submit" class="btn btn-primary" value="M'inscrire" />
+            </div>
+            <br/><br/>
+            <div id="myform" >
+            <h4 label class="formcol" for="lastName">Nom :</label></h4>
+            <input name="nomInscription" id="lastName" class="push300" type="text" placeholder="votre Nom"/>
+            <br/><br/>
 
-        <h4 label class="formcol" for="lastName">Nom :</label></h4>
-        <input name="nomInscription" id="lastName" class="push300" type="text" placeholder="votre Nom"/>
-        <br /><br />
+            <h4 label class="formcol" for="firstName">Prénom :</label></h4>
+            <input name="prenomInscription" id="firstName" class="push300" type="text" placeholder="votre Prénom"/>
+            <br/><br/>
 
-        <h4 label class="formcol" for="firstName">Prénom :</label></h4>
-        <input name="prenomInscription" id="firstName" class="push300" type="text" placeholder="votre Prénom"/>
-        <br /><br />
+            <h4 label class="formcol" for="continent">Continent :</label></h4>
+            <select name="continent" class="push300" id="continent">
+                <option value="-1">Sélectionnez votre Continent</option>
+                {% for continent in continents %}
+                    <option value="{{ continent.id }}">{{ continent.continent }}</option>
+                {% endfor %}
+            </select> 
+                
+            <br/><br/>
+            <h4 label class="formcol" for="pays">Pays :</label></h4>
+            <select name="pays" class="push300" id="pays"></select>               
+            <br/><br/>
 
-        <h4 label class="formcol" for="continent">Continent :</label></h4>
-        <select name="continent" class="push300" id="continent">
-            <option value="-1">Sélectionnez votre Continent</option>
-            {% for continent in continents %}
-                <option value="{{ continent.id }}">{{ continent.continent }}</option>
-            {% endfor %}
-        </select> 
-            
-        <br /><br />
-        <h4 label class="formcol" for="pays">Pays :</label></h4>
-        <select name="pays" class="push300" id="pays"></select>               
-        <br /><br />
-
-        <h4 label class="formcol" for="ville">Ville :</label></h4>
-        <select name="villeInscription" class="push300" id="ville"></select>   
-        <br /><br />
-            
-    </form>
+            <h4 label class="formcol" for="ville">Ville :</label></h4>
+            <select name="villeInscription" class="push300" id="ville"></select>   
+            <br /><br />
+                
+        </form>
+    </div>
     <hr class="my-4">
-
+    
     <form method="POST">
             <h1 class="h1title">Partie Admin</h1>
         <div class="formInput2">
