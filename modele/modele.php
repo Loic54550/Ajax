@@ -65,11 +65,12 @@ function getUser($nom, $prenom, $villeId) {
 }
 
 //Insertion nom prenom
-function insertUser($nom, $prenom) {
+function insertUser($nom, $prenom, $villeId) {
     $pdo = co();
     $req = $pdo->prepare('INSERT INTO utilisateur (nom, prenom) VALUES (:nom, :preom)');
     $req->bindParam(":nom", $nom);
     $req->bindParam(":prenom", $prenom);
+    $req->bindParam(":ville", $villeId);
     $req->execute();
 }
  
