@@ -5,13 +5,11 @@
 .h1title {
    color: white;
    text-align: center;
- 
 }
 
 body {
    background-image:url(../img/world.jpg);
-   background-repeat:no-repeat;
-    
+   background-repeat:no-repeat;   
 }
 
 .formLabel {
@@ -26,32 +24,21 @@ body {
    min-height: 1px;
    text-align:;
    color: white;
-
 }
 
 .formInput {
    display: inline-block;
-   padding: 15px;
    text-align: center;
-   min-height: 1px;
-   text-align: center;
-
 }
 
 .my-4 {
-   background-color:white;
-  
+   background-color:white;  
 }
 
 #myform {
    margin-left: 300px;
-
-
 }
 
 .formInput2 {
    text-align: center;
-
-
-
 }
